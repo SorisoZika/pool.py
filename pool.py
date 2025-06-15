@@ -150,7 +150,7 @@ def process_out_file(out_file="KEYFOUNDKEYFOUND.txt", in_file="in.txt", addition
         for i in range(0, len(ordered_private_keys), 10): 
             batch = ordered_private_keys[i:i + 10]
             if len(batch) == 10:
-                batch = [f"0x00000000000000000000000000000000000000000000000{key}" for key in batch]
+                batch = [f"0x{key.rjust(64, '0')}" for key in batch]
                 post_private_keys(batch)
             else:
                 print(f"Lote com menos de 10 chaves ignorado: {batch}")
